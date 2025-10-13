@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.VOltcore.com/sitemap.xml
+
+# Directories
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# File types
+Disallow: /*.pdf$
+Disallow: /*.zip$
+Disallow: /*.rar$
+
+# Specific files
+Disallow: /README.md
+Disallow: /LICENSE
+
+# Crawl delay
+Crawl-delay: 10
