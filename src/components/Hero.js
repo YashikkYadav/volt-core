@@ -174,7 +174,7 @@ const Hero = () => {
             <div
               className="swiper-inner"
               style={{
-                backgroundImage: "url(/images/misc/solarpannel.jpg)",
+                backgroundImage: "url(/images/misc/solarpanel3.jpg)",
                 backgroundPosition: "center",
               }}
             >

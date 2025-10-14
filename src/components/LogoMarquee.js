@@ -34,6 +34,7 @@ const LogoMarquee = () => {
                 width={150}
                 height={80}
                 className="marquee-logo"
+                style={{ width: "auto", height: "80px" }}
               />
             </div>
           ))}
@@ -47,6 +48,7 @@ const LogoMarquee = () => {
                 width={150}
                 height={80}
                 className="marquee-logo"
+                style={{ width: "auto", height: "80px" }}
               />
             </div>
           ))}

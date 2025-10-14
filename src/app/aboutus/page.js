@@ -136,7 +136,7 @@ const AboutUs = () => {
                   </div>
                   <div className="rounded-1 w-90 overflow-hidden wow zoomIn">
                     <Image
-                      src="/images/misc/s6.webp"
+                      src="/images/misc/4.webp"
                       className="w-100 wow scaleIn"
                       alt="Professional Solar Installation Team in Jaipur"
                       width={600}
@@ -148,7 +148,7 @@ const AboutUs = () => {
                     data-wow-delay=".2s"
                   >
                     <Image
-                      src="/images/misc/s4.webp"
+                      src="/images/misc/2.webp"
                       className="w-100 wow scaleIn"
                       data-wow-delay=".2s"
                       alt="High-Efficiency Solar Panel Installation"

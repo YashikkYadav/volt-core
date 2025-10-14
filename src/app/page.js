@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import Hero from '../components/Hero';
 import LogoMarquee from '../components/LogoMarquee';
 import Gallery from '../components/Gallery';
+import WhatsappIcon from '@/components/WhatsappIcon';
 // import { Calculator } from '@/components/Calculator';
 
 export default function Home() {
@@ -15,7 +16,7 @@ export default function Home() {
     const initScripts = () => {
       // This would normally initialize swiper and other plugins
       // For now, we'll just ensure the page loads properly
-      console.log('Page scripts initialized');
+     
     };
     
     initScripts();
@@ -35,6 +36,7 @@ export default function Home() {
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
         
+        <WhatsappIcon/>
         <Hero />
         {/* <Calculator/> */}
          {/* Logo Marquee Section */}
@@ -114,7 +116,7 @@ export default function Home() {
                     className="relative overflow-hidden z-2 mb-5 rounded-1  w-60 soft-shadow wow zoomIn"
                   >
                     <Image
-                      src="/images/misc/p1.webp"
+                      src="/images/misc/5.webp"
                       className="w-100 wow scaleIn"
                       data-wow-duration="1s"
                       alt="Professional solar panel installation services"
@@ -128,7 +130,7 @@ export default function Home() {
                     data-wow-delay=".2s"
                   >
                     <Image
-                      src="/images/misc/p2.webp"
+                      src="/images/misc/1.webp"
                       className="w-100 wow scaleIn"
                       data-wow-duration="1s"
                       alt="Residential and commercial solar energy systems"
@@ -206,7 +208,7 @@ export default function Home() {
                     <div className="d-block hover">
                       <div className="relative overflow-hidden rounded-1">
                         <Image
-                          src="/images/services/1.webp"
+                          src="/images/misc/4.webp"
                           className="w-100 hover-scale-1-2"
                           alt="Rooftop and ground mounted solar projects"
                           width={400}
@@ -245,7 +247,7 @@ export default function Home() {
                     <div className="d-block hover">
                       <div className="relative overflow-hidden rounded-1">
                         <Image
-                          src="/images/services/2.webp"
+                          src="/images/services/image.png"
                           className="w-100 hover-scale-1-2"
                           alt="Robotic solar panel cleaning system"
                           width={400}
@@ -367,7 +369,7 @@ export default function Home() {
                   Trusted & Affordable Solar Solutions
                 </div>
                 <h2 className="wow fadeInUp" data-wow-delay=".2s">
-                  Why Choose VOltcore for Your Solar Energy Needs?
+                  Why Choose Voltcore for Your Solar Energy Needs?
                 </h2>
                 <div className="row g-4">
                   <div className="col-lg-6">
@@ -777,28 +779,16 @@ export default function Home() {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <a
-                  className="d-block hover popup-youtube"
-                  href="https://www.youtube.com/watch?v=C6rf51uHWJg"
-                >
-                  <div className="relative overflow-hidden">
-                    <div
-                      className="absolute start-0 w-100 abs-middle fs-36 text-white text-center z-2"
-                    >
-                      <div className="player circle wow scaleIn"><span></span></div>
-                    </div>
-                    <div
-                      className="absolute w-100 h-100 top-0 bg-dark hover-op-05"
-                    ></div>
+                
                     <Image
-                      src="/images/background/w1.webp"
+                      src="/images/misc/solarpannel.jpg"
                       className="w-100 hover-scale-1-1"
                       alt="Watch our solar energy video"
                       width={1920}
-                      height={1080}
+                      height={500}
+                      style={{ height: '70vh', objectFit: 'cover' }}
                     />
-                  </div>
-                </a>
+            
               </div>
             </div>
           </div>

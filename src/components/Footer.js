@@ -6,19 +6,18 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="section-dark">
+    <footer className="section-dark" style={{ padding: '50px 0 0 0' }}>
       <div className="container relative z-2">
         <div className="row gx-5">
-          <div className="col-lg-4 col-sm-6">
+          <div className="col-lg-4 col-md-6 col-sm-12 mb-5 mb-lg-0">
             <Image
               src="/images/new-logo.png"
-              className="logo-footer"
+              className="logo-footer mb-4"
               alt="Voltcore Logo"
               width={300}
               height={80}
             />
-            <div className="spacer-20"></div>
-            <p>
+            <p className="mb-4" style={{ fontSize: '0.9rem', lineHeight: '1.6' }}>
               At Voltcore, we&apos;re committed to delivering reliable,
               efficient, and sustainable solar energy solutions. From
               residential installations to commercial systems, we help you
@@ -26,20 +25,20 @@ const Footer = () => {
               protecting the planet.
             </p>
 
-            <div className="social-icons mb-sm-30">
-              <Link href="#">
+            <div className="social-icons mb-4">
+              <Link href="#" className="me-3">
                 <i className="fa-brands fa-facebook-f"></i>
                 <span className="visually-hidden">Facebook</span>
               </Link>
-              <Link href="#">
+              <Link href="#" className="me-3">
                 <i className="fa-brands fa-x-twitter"></i>
                 <span className="visually-hidden">Twitter</span>
               </Link>
-              <Link href="#">
+              <Link href="#" className="me-3">
                 <i className="fa-brands fa-whatsapp"></i>
                 <span className="visually-hidden">WhatsApp</span>
               </Link>
-              <Link href="#">
+              <Link href="#" className="me-3">
                 <i className="fa-brands fa-instagram"></i>
                 <span className="visually-hidden">Instagram</span>
               </Link>
@@ -50,56 +49,37 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-lg-5 col-sm-12 order-lg-1 order-sm-2">
+          <div className="col-lg-5 col-md-6 col-sm-12 mb-5 mb-lg-0">
             <div className="row">
-              <div className="col-lg-7 col-sm-6">
+              <div className="col-md-7 col-sm-12 mb-4 mb-md-0">
                 <div className="widget">
-                  <h5>Our Services</h5>
-                  <ul>
-                    <li>
-                      <Link href="/contactus">Solar Panel Installation</Link>
+                  <h5 className="mb-3">Our Services</h5>
+                  <ul className="list-unstyled">
+                    <li className="mb-2">
+                      <Link href="/contactus">Rooftop & Ground Mounted</Link>
                     </li>
-                    <li>
-                      <Link href="/contactus">Solar Panel Maintenance</Link>
+                    <li className="mb-2">
+                      <Link href="/contactus">Robotic Cleaning System</Link>
                     </li>
-                    <li>
-                      <Link href="/contactus">Custom System Design</Link>
-                    </li>
-                    <li>
-                      <Link href="/contactus">Solar Battery Storage</Link>
-                    </li>
-                    <li>
-                      <Link href="/contactus">
-                        System Monitoring & Reporting
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/contactus">Solar Panel Upgrades</Link>
+                    <li className="mb-2">
+                      <Link href="/contactus">Operation & Maintenance</Link>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              <div className="col-lg-5 col-sm-6">
+              <div className="col-md-5 col-sm-12">
                 <div className="widget">
-                  <h5>Company</h5>
-                  <ul>
-                    <li>
-                      <Link href="/">Home</Link>
-                    </li>
-                    <li>
+                  <h5 className="mb-3">Company</h5>
+                  <ul className="list-unstyled">
+                    <li className="mb-2">
                       <Link href="/servicespage">Our Services</Link>
                     </li>
-                    <li>
+                    <li className="mb-2">
                       <Link href="/aboutus">About Us</Link>
                     </li>
-                    <li>
-                      {/* <Link href="/">Blog</Link>
-                       */}
+                    <li className="mb-2">
                       <Link href="/testimonials">Testimonials</Link>
-                    </li>
-                    <li>
-                      <Link href="/contactus">Contact</Link>
                     </li>
                   </ul>
                 </div>
@@ -107,59 +87,61 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-sm-6 order-lg-2 order-sm-1">
+          <div className="col-lg-3 col-md-12 col-sm-12">
             <div className="widget">
-              <h5>Contact Us</h5>
+              <h5 className="mb-3">Contact Us</h5>
 
-              <div className="fw-bold text-white d-flex align-items-center">
+              <div className="fw-bold text-white d-flex align-items-start mb-3">
                 <i
-                  className="icofont-location-pin me-2 id-color"
+                  className="icofont-location-pin me-2 id-color mt-1"
                   style={{ color: "darkorange" }}
                 ></i>
-                <span>Head Office</span>
+                <div>
+                  <div className="fw-bold mb-1">Head Office</div>
+                  <div style={{ fontSize: '0.9rem' }}>F-18 Ram Path Shyam Nagar Jaipur. Near metro pillar 97</div>
+                </div>
               </div>
-              <div>F-18 Ram Path Shyam Nagar Jaipur. Near metro pillar 97</div>
 
-              <div className="spacer-20"></div>
-
-              <div className="fw-bold text-white d-flex align-items-center">
+              <div className="fw-bold text-white d-flex align-items-start mb-3">
                 <i
-                  className="icofont-phone me-2 id-color"
+                  className="icofont-phone me-2 id-color mt-1"
                   style={{ color: "darkorange" }}
                 ></i>
-                <span>Call Us</span>
+                <div>
+                  <div className="fw-bold mb-1">Call Us</div>
+                  <div style={{ fontSize: '0.9rem' }}>9024537068</div>
+                  <div style={{ fontSize: '0.9rem' }}>9664214831</div>
+                </div>
               </div>
-              <div>9024537068</div>
-              <div>9664214831</div>
 
-              <div className="spacer-20"></div>
-
-              <div className="fw-bold text-white d-flex align-items-center">
+              <div className="fw-bold text-white d-flex align-items-start">
                 <i
-                  className="icofont-envelope me-2 id-color"
+                  className="icofont-envelope me-2 id-color mt-1"
                   style={{ color: "darkorange" }}
                 ></i>
-                <span>Email Us</span>
+                <div>
+                  <div className="fw-bold mb-1">Email Us</div>
+                  <div style={{ fontSize: '0.9rem' }}>Voltcoreenergypvtltd@gmail.com</div>
+                </div>
               </div>
-              <div>Voltcoreenergypvtltd@gmail.com</div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="subfooter">
+      <div className="subfooter mt-4 py-3">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="de-flex">
-                <div className="de-flex-col">
+              <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <div className="mb-3 mb-md-0">
                   &copy; 2025 - Voltcore
                 </div>
-                <ul className="menu-simple">
-                  <li>
+                <ul className="list-inline mb-0">
+                  <li className="list-inline-item me-3">
                     <Link href="#">Terms &amp; Conditions</Link>
                   </li>
-                  <li>
+                  <li className="list-inline-item">
                     <Link href="#">Privacy Policy</Link>
                   </li>
                 </ul>
@@ -169,7 +151,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="abs w-50 end-0 bottom-0 op-3">
+      <div className="abs w-50 end-0 bottom-0 op-3 d-none d-lg-block">
         <Image
           src="/images/misc/c1.webp"
           className="w-100 rtl-hide"

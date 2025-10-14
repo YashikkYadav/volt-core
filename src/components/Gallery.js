@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(4);
   
   // Gallery images from the folder
   const galleryImages = [
@@ -16,6 +18,64 @@ const Gallery = () => {
     { id: 6, src: '/images/gallery/WhatsApp Image 2025-10-13 at 13.12.38_843b9fe7.jpg', alt: 'Solar Installation 6' },
   ];
 
+  // Create infinite loop by duplicating images
+  const duplicatedImages = [...galleryImages, ...galleryImages, ...galleryImages];
+
+  // Update slides to show based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 576) {
+        setSlidesToShow(1);
+      } else if (window.innerWidth < 768) {
+        setSlidesToShow(2);
+      } else if (window.innerWidth < 992) {
+        setSlidesToShow(3);
+      } else {
+        setSlidesToShow(4);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Auto-advance carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => prevIndex + 1);
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Reset index for infinite loop effect
+  useEffect(() => {
+    if (currentIndex >= galleryImages.length) {
+      setTimeout(() => {
+        setCurrentIndex(0);
+      }, 500); // Small delay to ensure smooth transition
+    }
+  }, [currentIndex, galleryImages.length]);
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => prevIndex + 1);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => {
+      if (prevIndex === 0) {
+        return galleryImages.length - 1;
+      }
+      return prevIndex - 1;
+    });
+  };
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
   const openModal = (image) => {
     setSelectedImage(image);
   };
@@ -23,6 +83,9 @@ const Gallery = () => {
   const closeModal = () => {
     setSelectedImage(null);
   };
+
+  // Calculate how many slides we can actually show
+  const visibleSlides = Math.min(slidesToShow, galleryImages.length);
 
   return (
     <section className="py-5">
@@ -34,44 +97,84 @@ const Gallery = () => {
           </p>
         </div>
         
-        <div className="row g-4">
-          {galleryImages.map((image) => (
-            <div key={image.id} className="col-lg-4 col-md-6 col-sm-12">
-              <div 
-                className="gallery-item overflow-hidden rounded-3 shadow-sm wow fadeInUp"
-                data-wow-delay={`${image.id * 0.1}s`}
-                onClick={() => openModal(image)}
-                style={{ cursor: 'pointer', height: '250px' }}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={400}
-                  height={300}
-                  className="w-100 h-100 object-fit-cover"
-                  style={{ transition: 'transform 0.3s ease' }}
-                />
+        {/* Custom Carousel */}
+        <div className="position-relative">
+          <div className="overflow-hidden rounded-3 shadow-sm" style={{ height: '300px' }}>
+            <div 
+              className="d-flex h-100"
+              style={{ 
+                transform: `translateX(-${currentIndex * (100 / visibleSlides)}%)`,
+                transition: currentIndex === 0 && 'none' || 'transform 0.5s ease-in-out',
+                gap: '15px',
+                padding: '0 15px'
+              }}
+            >
+              {duplicatedImages.map((image, index) => (
                 <div 
-                  className="gallery-overlay d-flex align-items-center justify-content-center"
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                    opacity: 0,
-                    transition: 'opacity 0.3s ease',
-                  }}
+                  key={`${image.id}-${index}`} 
+                  className="flex-shrink-0 position-relative"
+                  style={{ width: `calc(${100 / visibleSlides}% - 15px)` }}
+                  onClick={() => openModal(image)}
                 >
-                  <div className="text-white text-center p-3">
-                    <i className="fa fa-search-plus fa-2x mb-2"></i>
-                    <p className="mb-0">{image.alt}</p>
+                  <div className="h-100 w-100 position-relative">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-fit-cover rounded-3"
+                      style={{ cursor: 'pointer' }}
+                    />
+                    <div 
+                      className="gallery-overlay d-flex align-items-center justify-content-center"
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        opacity: 0,
+                        transition: 'opacity 0.3s ease',
+                      }}
+                    >
+                      <div className="text-white text-center p-3">
+                        <i className="fa fa-search-plus fa-2x mb-2"></i>
+                        <p className="mb-0">{image.alt}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+          
+          {/* Navigation Arrows */}
+          <button 
+            className="btn btn-primary position-absolute start-0 top-50 translate-middle-y ms-3"
+            style={{ zIndex: 10 }}
+            onClick={prevSlide}
+          >
+            &lt;
+          </button>
+          <button 
+            className="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"
+            style={{ zIndex: 10}}
+            onClick={nextSlide}
+          >
+            &gt;
+          </button>
+          
+          {/* Pagination Dots */}
+          <div className="d-flex justify-content-center mt-3">
+            {galleryImages.map((_, index) => (
+              <button
+                key={index}
+                className={`mx-1 rounded-circle border-0 ${index === (currentIndex % galleryImages.length) ? 'bg-primary' : 'bg-secondary'}`}
+                style={{ width: '12px', height: '12px' }}
+                onClick={() => goToSlide(index)}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -111,12 +214,8 @@ const Gallery = () => {
       )}
 
       <style jsx>{`
-        .gallery-item:hover .gallery-overlay {
+        .gallery-overlay:hover {
           opacity: 1;
-        }
-        
-        .gallery-item:hover img {
-          transform: scale(1.05);
         }
         
         .object-fit-cover {
