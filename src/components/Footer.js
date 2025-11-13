@@ -6,7 +6,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="section-dark" style={{ padding: '50px 0 0 0' }}>
+    <footer className="section-dark" style={{ padding: "50px 0 0 0" }}>
       <div className="container relative z-2">
         <div className="row gx-5">
           <div className="col-lg-4 col-md-6 col-sm-12 mb-5 mb-lg-0">
@@ -17,7 +17,10 @@ const Footer = () => {
               width={300}
               height={80}
             />
-            <p className="mb-4" style={{ fontSize: '0.9rem', lineHeight: '1.6' }}>
+            <p
+              className="mb-4"
+              style={{ fontSize: "0.9rem", lineHeight: "1.6" }}
+            >
               At Voltcore, we&apos;re committed to delivering reliable,
               efficient, and sustainable solar energy solutions. From
               residential installations to commercial systems, we help you
@@ -98,7 +101,10 @@ const Footer = () => {
                 ></i>
                 <div>
                   <div className="fw-bold mb-1">Head Office</div>
-                  <div style={{ fontSize: '0.9rem' }}>F-18 Ram Path Shyam Nagar Jaipur. Near metro pillar 97</div>
+                  <div style={{ fontSize: "0.9rem" }}>
+                    F-18, Ram Path, Shyam Nagar,
+                    <br /> Near metro pillar 97, Jaipur.{" "}
+                  </div>
                 </div>
               </div>
 
@@ -109,8 +115,8 @@ const Footer = () => {
                 ></i>
                 <div>
                   <div className="fw-bold mb-1">Call Us</div>
-                  <div style={{ fontSize: '0.9rem' }}>9024537068</div>
-                  <div style={{ fontSize: '0.9rem' }}>9664214831</div>
+                  <div style={{ fontSize: "0.9rem" }}>9024537068</div>
+                  <div style={{ fontSize: "0.9rem" }}>9664214831</div>
                 </div>
               </div>
 
@@ -121,7 +127,9 @@ const Footer = () => {
                 ></i>
                 <div>
                   <div className="fw-bold mb-1">Email Us</div>
-                  <div style={{ fontSize: '0.9rem' }}>Voltcoreenergypvtltd@gmail.com</div>
+                  <div style={{ fontSize: "0.9rem" }}>
+                    Voltcoreenergypvtltd@gmail.com
+                  </div>
                 </div>
               </div>
             </div>
@@ -134,9 +142,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                <div className="mb-3 mb-md-0">
-                  &copy; 2025 - Voltcore
-                </div>
+                <div className="mb-3 mb-md-0">&copy; 2025 - Voltcore</div>
                 <ul className="list-inline mb-0">
                   <li className="list-inline-item me-3">
                     <Link href="#">Terms &amp; Conditions</Link>

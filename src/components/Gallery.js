@@ -1,25 +1,53 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(4);
-  
+
   // Gallery images from the folder
   const galleryImages = [
-    { id: 1, src: '/images/gallery/WhatsApp Image 2025-10-13 at 13.12.36_9dd644cc.jpg', alt: 'Solar Installation 1' },
-    { id: 2, src: '/images/gallery/WhatsApp Image 2025-10-13 at 13.12.37_0a108826.jpg', alt: 'Solar Installation 2' },
-    { id: 3, src: '/images/gallery/WhatsApp Image 2025-10-13 at 13.12.37_42b107e9.jpg', alt: 'Solar Installation 3' },
-    { id: 4, src: '/images/gallery/WhatsApp Image 2025-10-13 at 13.12.37_78fbde11.jpg', alt: 'Solar Installation 4' },
-    { id: 5, src: '/images/gallery/WhatsApp Image 2025-10-13 at 13.12.38_76bcc4a8.jpg', alt: 'Solar Installation 5' },
-    { id: 6, src: '/images/gallery/WhatsApp Image 2025-10-13 at 13.12.38_843b9fe7.jpg', alt: 'Solar Installation 6' },
+    {
+      id: 1,
+      src: "/images/gallery/WhatsApp Image 2025-10-13 at 13.12.36_9dd644cc.jpg",
+      alt: "Solar Installation 1",
+    },
+    {
+      id: 2,
+      src: "/images/gallery/WhatsApp Image 2025-10-13 at 13.12.37_0a108826.jpg",
+      alt: "Solar Installation 2",
+    },
+    {
+      id: 3,
+      src: "/images/gallery/WhatsApp Image 2025-10-13 at 13.12.37_42b107e9.jpg",
+      alt: "Solar Installation 3",
+    },
+    {
+      id: 4,
+      src: "/images/gallery/WhatsApp Image 2025-10-13 at 13.12.37_78fbde11.jpg",
+      alt: "Solar Installation 4",
+    },
+    {
+      id: 5,
+      src: "/images/gallery/WhatsApp Image 2025-10-13 at 13.12.38_76bcc4a8.jpg",
+      alt: "Solar Installation 5",
+    },
+    {
+      id: 6,
+      src: "/images/gallery/WhatsApp Image 2025-10-13 at 13.12.38_843b9fe7.jpg",
+      alt: "Solar Installation 6",
+    },
   ];
 
   // Create infinite loop by duplicating images
-  const duplicatedImages = [...galleryImages, ...galleryImages, ...galleryImages];
+  const duplicatedImages = [
+    ...galleryImages,
+    ...galleryImages,
+    ...galleryImages,
+  ];
 
   // Update slides to show based on screen size
   useEffect(() => {
@@ -36,9 +64,9 @@ const Gallery = () => {
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
-    
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Auto-advance carousel
@@ -96,22 +124,29 @@ const Gallery = () => {
             Explore our successful solar installations and projects
           </p>
         </div>
-        
+
         {/* Custom Carousel */}
         <div className="position-relative">
-          <div className="overflow-hidden rounded-3 shadow-sm" style={{ height: '300px' }}>
-            <div 
+          <div
+            className="overflow-hidden rounded-3 shadow-sm"
+            style={{ height: "300px" }}
+          >
+            <div
               className="d-flex h-100"
-              style={{ 
-                transform: `translateX(-${currentIndex * (100 / visibleSlides)}%)`,
-                transition: currentIndex === 0 && 'none' || 'transform 0.5s ease-in-out',
-                gap: '15px',
-                padding: '0 15px'
+              style={{
+                transform: `translateX(-${
+                  currentIndex * (100 / visibleSlides)
+                }%)`,
+                transition:
+                  (currentIndex === 0 && "none") ||
+                  "transform 0.5s ease-in-out",
+                gap: "15px",
+                padding: "0 15px",
               }}
             >
               {duplicatedImages.map((image, index) => (
-                <div 
-                  key={`${image.id}-${index}`} 
+                <div
+                  key={`${image.id}-${index}`}
                   className="flex-shrink-0 position-relative"
                   style={{ width: `calc(${100 / visibleSlides}% - 15px)` }}
                   onClick={() => openModal(image)}
@@ -122,19 +157,19 @@ const Gallery = () => {
                       alt={image.alt}
                       fill
                       className="object-fit-cover rounded-3"
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: "pointer" }}
                     />
-                    <div 
+                    <div
                       className="gallery-overlay d-flex align-items-center justify-content-center"
                       style={{
-                        position: 'absolute',
+                        position: "absolute",
                         top: 0,
                         left: 0,
-                        width: '100%',
-                        height: '100%',
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        width: "100%",
+                        height: "100%",
+                        backgroundColor: "rgba(0, 0, 0, 0.5)",
                         opacity: 0,
-                        transition: 'opacity 0.3s ease',
+                        transition: "opacity 0.3s ease",
                       }}
                     >
                       <div className="text-white text-center p-3">
@@ -147,30 +182,34 @@ const Gallery = () => {
               ))}
             </div>
           </div>
-          
+
           {/* Navigation Arrows */}
-          <button 
-            className="btn btn-primary position-absolute start-0 top-50 translate-middle-y ms-3"
+          <button
+            className=" btn-primary position-absolute start-0 top-50 translate-middle-y ms-3"
             style={{ zIndex: 10 }}
             onClick={prevSlide}
           >
             &lt;
           </button>
-          <button 
-            className="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"
-            style={{ zIndex: 10}}
+          <button
+            className=" btn-primary position-absolute end-0 top-50 translate-middle-y me-3"
+            style={{ zIndex: 10 }}
             onClick={nextSlide}
           >
             &gt;
           </button>
-          
+
           {/* Pagination Dots */}
           <div className="d-flex justify-content-center mt-3">
             {galleryImages.map((_, index) => (
               <button
                 key={index}
-                className={`mx-1 rounded-circle border-0 ${index === (currentIndex % galleryImages.length) ? 'bg-primary' : 'bg-secondary'}`}
-                style={{ width: '12px', height: '12px' }}
+                className={`mx-1 rounded-circle border-0 ${
+                  index === currentIndex % galleryImages.length
+                    ? "bg-primary"
+                    : "bg-secondary"
+                }`}
+                style={{ width: "12px", height: "12px" }}
                 onClick={() => goToSlide(index)}
               />
             ))}
@@ -180,21 +219,21 @@ const Gallery = () => {
 
       {/* Modal for enlarged image */}
       {selectedImage && (
-        <div 
+        <div
           className="modal fade show d-block"
           tabIndex="-1"
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', zIndex: 1050 }}
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.8)", zIndex: 1050 }}
           onClick={closeModal}
         >
           <div className="modal-dialog modal-dialog-centered modal-lg">
             <div className="modal-content border-0 bg-transparent">
               <div className="modal-body p-0">
                 <div className="d-flex justify-content-end mb-2">
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     className="btn-close btn-close-white"
                     onClick={closeModal}
-                    style={{ backgroundColor: 'white' }}
+                    style={{ backgroundColor: "white" }}
                   ></button>
                 </div>
                 <div className="text-center">
@@ -217,7 +256,7 @@ const Gallery = () => {
         .gallery-overlay:hover {
           opacity: 1;
         }
-        
+
         .object-fit-cover {
           object-fit: cover;
         }

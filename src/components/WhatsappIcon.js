@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { FaWhatsapp } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
-import './WhatsappIcon.css';
+import "./WhatsappIcon.css";
 
 const WhatsappIcon = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -14,8 +14,8 @@ const WhatsappIcon = () => {
     setIsClient(true);
     setPosition({
       x: window.innerWidth - 100,
-      y: window.innerHeight
-      // y: window.innerHeight 
+      y: window.innerHeight,
+      // y: window.innerHeight
     });
   }, []);
 
@@ -24,21 +24,21 @@ const WhatsappIcon = () => {
     if (!isClient) return;
 
     const handleResize = () => {
-      setPosition(prev => ({
+      setPosition((prev) => ({
         x: Math.min(prev.x, window.innerWidth - 20),
-        y: Math.min(prev.y, window.innerHeight - 80)
+        y: Math.min(prev.y, window.innerHeight - 80),
       }));
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [isClient]);
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
     setDragStart({
       x: e.clientX - position.x,
-      y: e.clientY - position.y
+      y: e.clientY - position.y,
     });
   };
 
@@ -47,7 +47,7 @@ const WhatsappIcon = () => {
     const touch = e.touches[0];
     setDragStart({
       x: touch.clientX - position.x,
-      y: touch.clientY - position.y
+      y: touch.clientY - position.y,
     });
   };
 
@@ -55,7 +55,7 @@ const WhatsappIcon = () => {
     if (!isDragging || !isClient) return;
     setPosition({
       x: e.clientX - dragStart.x,
-      y: e.clientY - dragStart.y
+      y: e.clientY - dragStart.y,
     });
   };
 
@@ -64,7 +64,7 @@ const WhatsappIcon = () => {
     const touch = e.touches[0];
     setPosition({
       x: touch.clientX - dragStart.x,
-      y: touch.clientY - dragStart.y
+      y: touch.clientY - dragStart.y,
     });
   };
 
@@ -79,7 +79,7 @@ const WhatsappIcon = () => {
   const handleClick = (e) => {
     // Only redirect if not dragging
     if (!isDragging && isClient) {
-      window.open('https://wa.me/9024537068', '_blank');
+      window.open("https://wa.me/9024537068", "_blank");
     }
   };
 
@@ -88,17 +88,17 @@ const WhatsappIcon = () => {
     if (!isClient) return;
 
     if (isDragging) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-      document.addEventListener('touchmove', handleTouchMove);
-      document.addEventListener('touchend', handleTouchEnd);
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+      document.addEventListener("touchmove", handleTouchMove);
+      document.addEventListener("touchend", handleTouchEnd);
     }
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
     };
   }, [isDragging, dragStart, isClient]);
 
@@ -111,9 +111,11 @@ const WhatsappIcon = () => {
     <div
       className="whatsapp-icon"
       style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        cursor: isDragging ? 'grabbing' : 'grab'
+        // left: `${position.x}px`,
+        // top: `${position.y}px`,
+        right: `20px`,
+        top: `80vh`,
+        cursor: isDragging ? "grabbing" : "grab",
       }}
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
@@ -122,7 +124,7 @@ const WhatsappIcon = () => {
       role="button"
     >
       {/* <FaWhatsapp size="70%" color="#25D366" /> */}
-      <IoLogoWhatsapp size="100%" color="#25D366"/>
+      <IoLogoWhatsapp size="100%" color="#25D366" />
     </div>
   );
 };
